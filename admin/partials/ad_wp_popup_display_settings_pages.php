@@ -36,6 +36,8 @@ function testCSS()
 <?php
 
 do_action('media_buttons', 'INSEREZ UN ID');
+add_action('wp_enqueue_media', array($this, 'mediaChange'));
+do_action('wp_enqueue_media')
 ?>
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>

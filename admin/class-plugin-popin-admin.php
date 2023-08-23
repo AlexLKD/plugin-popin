@@ -112,4 +112,19 @@ class Plugin_Popin_Admin
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/plugin-popin-admin.js', array('jquery'), $this->version, false);
 	}
+
+	// register the datas passed in form
+	public function wp_popup_register_option_in_database()
+	{
+
+		$template_option = "plugin_popin_jean_louis_";
+		add_option($template_option . "description", "Bienvenue sur mon site");
+		add_option($template_option . "image", "une-url-bidon.jpeg");
+		add_option($template_option . "button", "Cliquez ici pour s'inscrire");
+		// do_action( "plugin_popin_jean-louis_description", );
+		// add_option('option-1-text', '');
+		// add_option('option-1-value', '');
+		// update_option('option-1-text', $option1text);
+		// update_option('option-1-value', $option1value);
+	}
 }
