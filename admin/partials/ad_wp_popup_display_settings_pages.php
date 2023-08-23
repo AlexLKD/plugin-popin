@@ -1,7 +1,9 @@
-<div id="redmodal" class="redmodal">
+<img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+
+<!-- <div id="redmodal" class="redmodal">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
-        <button class="close-button" onclick="closeredmodal()"> &times; </button>
+        <button class="close-button"> &times; </button>
     </div>
     <div class="redmodal-body">
         <form id="leadGeneration">
@@ -10,16 +12,16 @@
                 <p id="description">Subscribe now for hand-picked holiday deals, inspiration and latest tips, straight to your inbox.</p>
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
-            <input id="mybtn" class="red-pop" type="submit" value="SUBSCRIBE">
-            <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
-                                                        echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
-                                                        ?></p>
+            <input id="mybtn" class="red-pop" type="submit" value="SUBSCRIBE"> -->
+<!-- <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
+                                                echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
+                                                ?></p> -->
 
-            <input type="hidden" id="formid" name="formid" value="1005">
+<!-- <input type="hidden" id="formid" name="formid" value="1005">
         </form>
     </div>
 </div>
-<div id="overlay" class="overlay" onclick="closeredmodal()"> </div>
+<div id="overlay" class="overlay" onclick="closeredmodal()"> </div> -->
 
 <?php
 function ava_test_init()
