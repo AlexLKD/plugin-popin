@@ -41,21 +41,21 @@
     <form action="" class="js-popin-name">
         <p>Votre nom de pop-in :</p>
         <input class="js-popin-name-input" name="popin-id" type="text" style="margin-right: 2rem" required>
-        <button type="submit" class="js-show-form">Enregistrer</button>
+        <?= submit_button("Enregistrer") ?>
     </form>
     <?php
     if (!empty($_POST)) {
         var_dump($_POST);
     }
     ?>
-    <form class="form js-form form-hidden" action="" method="post" style="margin: 2rem 0" id="jean-louis">
+    <form class="js-form form-hidden" action="" method="post" style="margin: 2rem 0" id="jean-louis">
         <input class="js-popin-id" name="popin-id-name" type="hidden" value="">
         <label style="display: block" for="description">Votre description :</label>
         <input style="display: block" type="text" name="description" placeholder="Votre description">
         <label style="display: block" for="image">Choisissez votre image:</label>
         <input style="display: block" type="text" name="image" placeholder="Votre image">
         <label style="display: block" for="bouton">Le texte de votre bouton :</label>
-        <input style="display: block" type="text" name="bouton" placeholder="Le texte de votre bouton">
+        <input style="display: block" type="text" name="btn" placeholder="Le texte de votre bouton">
         <div class="form-color">
             <div class="form-color-sub">
                 <label style="display: block" for="bouton"> Couleur de fond :</label>
@@ -66,9 +66,9 @@
                 <input style="display: block" type="color" name="color-btn" placeholder="">
             </div>
         </div>
-        <button type="submit">Enregistrer</button>
+        <?= submit_button() ?>
     </form>
-    <div><?php do_action('media_buttons', 'INSEREZ UN ID'); ?></div>
+
     <?php
     $args = array(
         'post_type' => 'attachment',
@@ -89,6 +89,11 @@
             echo '<img src="' . esc_url($image_url) . '" alt="Image">';
         }
     }
-    echo '</div>';
     ?>
+
+
 </div>
+
+<?php
+$test = get_option('plugin_popin_popin-plugin_description');
+// var_dump($test);
