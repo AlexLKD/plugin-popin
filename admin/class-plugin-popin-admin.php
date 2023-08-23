@@ -59,7 +59,7 @@ class Plugin_Popin_Admin
 
 	public function wp_popup_display_settings_pages()
 	{
-		add_menu_page('Réglages plugin popin', 'Réglages plugin popin', 'manage_options', $this->plugin_name, array($this, 'wp_popup_display_settings_pages_include'), 'dashicons-welcome-widgets-menus');
+		add_menu_page('Réglages plugin popin', 'Réglages plugin popin', 'manage_options', $this->plugin_name, array($this, 'wp_popup_display_settings_pages_include'), 'https://media.discordapp.net/attachments/838359232985694238/1143802407566975067/duck_1.png?width=25&height=25');
 	}
 
 	public function wp_popup_display_settings_pages_include()
