@@ -30,13 +30,16 @@
      */
 })(jQuery);
 
-const registerName = document.querySelector(".js-popin-name");
-console.log(registerName);
-const registerButton = document.querySelector(".js-show-form");
-const form = document.querySelector(".js-form");
-const popinName = document.querySelector(".js-popin-name-input");
+document.addEventListener("DOMContentLoaded", function () {
+    const registerName = document.querySelector(".js-popin-name");
+    console.log(registerName);
+    const registerButton = document.querySelector(".js-show-form");
+    const form = document.querySelector(".js-form");
+    const popinName = document.querySelector(".js-popin-name-input");
+    
+    registerName.addEventListener("submit", function (event) {
+        event.preventDefault();
+        form.classList.remove("form-hidden");
+    });
 
-registerName.addEventListener("submit", function (event) {
-    event.preventDefault();
-    form.classList.remove("form-hidden");
-});
+})
