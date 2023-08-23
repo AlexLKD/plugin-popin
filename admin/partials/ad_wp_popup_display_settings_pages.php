@@ -39,7 +39,9 @@ function testCSS()
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>
     <input class="js-popin-name-input" name="popin-id" type="text" style="margin-right: 2rem" required>
-    <button type="submit" class="js-show-form">Enregistrer</button>
+    <?= submit_button("Enregistrer")?>
+
+    <!-- <button type="submit" class="js-show-form">Enregistrer</button> -->
 </form>
 <?php
 if (!empty($_POST)) {
@@ -53,9 +55,10 @@ if (!empty($_POST)) {
     <label style="display: block" for="image">Choisissez votre image:</label>
     <?php do_action('media_buttons', 'INSEREZ UN ID'); ?>
     <input style="display: block" type="text" name="image" placeholder="Votre image">
-    <label style="display: block" for="bouton">Le texte de votre bouton :</label>
-    <input style="display: block" type="text" name="bouton" placeholder="Le texte de votre bouton">
-    <button type="submit">Enregistrer</button>
+    <label style="display: block" for="btn">Le texte de votre bouton :</label>
+    <input style="display: block" type="text" name="btn" placeholder="Le texte de votre bouton">
+    <?= submit_button()?>
+    <!-- <button type="submit">Enregistrer</button> -->
 </form>
 
 <?php
@@ -79,3 +82,7 @@ foreach ($attachments as $attachment) {
     }
 }
 ?>
+
+<?php
+$test = get_option('plugin_popin_popin-plugin_description');
+var_dump($test);
