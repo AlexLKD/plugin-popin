@@ -1,7 +1,8 @@
-<img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+<div class="container">
+    <img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
 
 
-<!-- <div id="redmodal" class="redmodal">
+    <!-- <div id="redmodal" class="redmodal">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
         <button class="close-button"> &times; </button>
@@ -14,34 +15,33 @@
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input id="mybtn" class="red-pop" type="submit" value="SUBSCRIBE"> -->
-<!-- <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
-                                                echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
-                                                ?></p> -->
+    <!-- <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
+                                                    echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
+                                                    ?></p> -->
 
-<!-- <input type="hidden" id="formid" name="formid" value="1005">
+    <!-- <input type="hidden" id="formid" name="formid" value="1005">
         </form>
     </div>
 </div>
 <div id="overlay" class="overlay" onclick="closeredmodal()"> </div> -->
 
-<?php
-function ava_test_init()
-{
-    wp_enqueue_script('ava-test-js', plugins_url('.../js/plugin-popin-admin.js', __FILE__));
-}
+    <?php
+    function ava_test_init()
+    {
+        wp_enqueue_script('ava-test-js', plugins_url('.../js/plugin-popin-admin.js', __FILE__));
+    }
 
-function testCSS()
-{
-    wp_enqueue_style("test-css", plugins_url('.../css/plugin-popin-admin.css', __FILE__));
-}
-?>
+    function testCSS()
+    {
+        wp_enqueue_style("test-css", plugins_url('.../css/plugin-popin-admin.css', __FILE__));
+    }
+    ?>
+
 
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>
     <input class="js-popin-name-input" name="popin-id" type="text" style="margin-right: 2rem" required>
-    <?= submit_button("Enregistrer")?>
-
-    <!-- <button type="submit" class="js-show-form">Enregistrer</button> -->
+    <button type="submit" class="js-show-form">Enregistrer</button>
 </form>
 <?php
 if (!empty($_POST)) {
@@ -55,10 +55,9 @@ if (!empty($_POST)) {
     <label style="display: block" for="image">Choisissez votre image:</label>
     <?php do_action('media_buttons', 'INSEREZ UN ID'); ?>
     <input style="display: block" type="text" name="image" placeholder="Votre image">
-    <label style="display: block" for="btn">Le texte de votre bouton :</label>
+    <label style="display: block" for="bouton">Le texte de votre bouton :</label>
     <input style="display: block" type="text" name="btn" placeholder="Le texte de votre bouton">
-    <?= submit_button()?>
-    <!-- <button type="submit">Enregistrer</button> -->
+    <button type="submit">Enregistrer</button>
 </form>
 
 <?php
@@ -68,14 +67,14 @@ $args = array(
     'posts_per_page' => -1, // Display all images
 );
 
-$attachments = get_posts($args);
+    $attachments = get_posts($args);
 
-foreach ($attachments as $attachment) {
-    $attachment_id = $attachment->ID;
-    $image_attributes = wp_get_attachment_image_src($attachment_id, 'thumbnail', false);
+    foreach ($attachments as $attachment) {
+        $attachment_id = $attachment->ID;
+        $image_attributes = wp_get_attachment_image_src($attachment_id, 'thumbnail', false);
 
-    if ($image_attributes) {
-        $image_url = $image_attributes[0]; // URL of the image
+        if ($image_attributes) {
+            $image_url = $image_attributes[0]; // URL of the image
 
         // Output the image tag
         echo '<img src="' . esc_url($image_url) . '" alt="Image">';
@@ -83,6 +82,11 @@ foreach ($attachments as $attachment) {
 }
 ?>
 
+
+</div>
+
+
+
 <?php
 $test = get_option('plugin_popin_popin-plugin_description');
-var_dump($test);
+// var_dump($test);
