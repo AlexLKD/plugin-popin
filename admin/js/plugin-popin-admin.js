@@ -32,7 +32,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const registerName = document.querySelector(".js-popin-name");
-    console.log(registerName);
+    // console.log(registerName);
     const registerButton = document.querySelector(".js-show-form");
     const form = document.querySelector(".js-form");
     const popinName = document.querySelector(".js-popin-name-input");
@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     registerName.addEventListener("submit", function (event) {
         event.preventDefault();
         form.classList.remove("form-hidden");
+        console.log(registerName["popin-id"].value);
     });
 
 })

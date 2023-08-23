@@ -39,7 +39,7 @@ function testCSS()
 ?>
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>
-    <input class="js-popin-name-input" type="text" style="margin-right: 2rem" required>
+    <input class="js-popin-name-input" name="popin-id" type="text" style="margin-right: 2rem" required>
     <button type="submit" class="js-show-form">Enregistrer</button>
 </form>
 <?php
