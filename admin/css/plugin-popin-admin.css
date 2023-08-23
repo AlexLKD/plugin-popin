@@ -150,3 +150,7 @@ p.close {
     font-size: 1rem;
     margin: 7px 0px 0px 0px;
 }
+
+.form-hidden {
+    display: none;
+}

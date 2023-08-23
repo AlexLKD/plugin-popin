@@ -20,13 +20,40 @@
     </div>
 </div>
 <div id="overlay" class="overlay" onclick="closeredmodal()"> </div>
+
 <?php
 function ava_test_init()
 {
-    wp_enqueue_script('ava-test-js', plugins_url('/count-down.js', __FILE__));
+    wp_enqueue_script('ava-test-js', plugins_url('.../js/plugin-popin-admin.js', __FILE__));
 }
 
 function testCSS()
 {
     wp_enqueue_style("test-css", plugins_url('.../css/plugin-popin-admin.css', __FILE__));
 }
+?>
+
+<?php
+
+do_action('media_buttons', 'INSEREZ UN ID');
+?>
+<form action="" class="js-popin-name">
+    <p>Votre nom de pop-in :</p>
+    <input class="js-popin-name-input" type="text" style="margin-right: 2rem" required>
+    <button class="js-show-form">Enregistrer</button>
+</form>
+<?php
+if (!empty($_POST)) {
+    var_dump($_POST);
+}
+?>
+<form class="js-form form-hidden" action="" method="post" style="margin: 2rem 0" id="jean-louis">
+    <label style="display: block" for="description">Votre description :</label>
+    <input style="display: block" type="text" name="description" placeholder="Votre description">
+    <label style="display: block" for="image">Choisissez votre image:</label>
+    <?php do_action('media_buttons', 'INSEREZ UN ID'); ?>
+    <input style="display: block" type="text" name="image" placeholder="Votre image">
+    <label style="display: block" for="bouton">Le texte de votre bouton :</label>
+    <input style="display: block" type="text" name="bouton" placeholder="Le texte de votre bouton">
+    <button type="submit">Enregistrer</button>
+</form>
