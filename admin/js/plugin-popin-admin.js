@@ -40,6 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
     registerName.addEventListener("submit", function (event) {
         event.preventDefault();
         form.classList.remove("form-hidden");
+        registerButton.classList.add("form-hidden");
+        popinName.setAttribute("disabled", true);
         console.log(registerName["popin-id"].value);
     });
 });
