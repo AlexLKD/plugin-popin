@@ -35,17 +35,17 @@ function testCSS()
 
 <?php
 
-do_action('media_buttons', 'INSEREZ UN ID');
+// do_action('media_buttons', 'INSEREZ UN ID');
 ?>
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>
     <input class="js-popin-name-input" type="text" style="margin-right: 2rem" required>
-    <button class="js-show-form">Enregistrer</button>
+    <button type="submit" class="js-show-form">Enregistrer</button>
 </form>
 <?php
-if (!empty($_POST)) {
-    var_dump($_POST);
-}
+// if (!empty($_POST)) {
+//     var_dump($_POST);
+// }
 ?>
 <form class="js-form form-hidden" action="" method="post" style="margin: 2rem 0" id="jean-louis">
     <label style="display: block" for="description">Votre description :</label>
