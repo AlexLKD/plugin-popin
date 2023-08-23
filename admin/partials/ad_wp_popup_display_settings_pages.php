@@ -77,7 +77,7 @@
     );
 
     $attachments = get_posts($args);
-
+    echo '<div class="gallery">';
     foreach ($attachments as $attachment) {
         $attachment_id = $attachment->ID;
         $image_attributes = wp_get_attachment_image_src($attachment_id, 'thumbnail', false);
@@ -89,5 +89,6 @@
             echo '<img src="' . esc_url($image_url) . '" alt="Image">';
         }
     }
+    echo '</div>';
     ?>
 </div>
