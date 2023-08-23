@@ -1,5 +1,6 @@
 <img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
 
+
 <!-- <div id="redmodal" class="redmodal">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
@@ -35,10 +36,6 @@ function testCSS()
 }
 ?>
 
-<?php
-
-// do_action('media_buttons', 'INSEREZ UN ID');
-?>
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>
     <input class="js-popin-name-input" name="popin-id" type="text" style="margin-right: 2rem" required>
@@ -60,3 +57,25 @@ if (!empty($_POST)) {
     <input style="display: block" type="text" name="bouton" placeholder="Le texte de votre bouton">
     <button type="submit">Enregistrer</button>
 </form>
+
+<?php
+$args = array(
+    'post_type' => 'attachment',
+    'post_mime_type' => 'image',
+    'posts_per_page' => -1, // Display all images
+);
+
+$attachments = get_posts($args);
+
+foreach ($attachments as $attachment) {
+    $attachment_id = $attachment->ID;
+    $image_attributes = wp_get_attachment_image_src($attachment_id, 'thumbnail', false);
+
+    if ($image_attributes) {
+        $image_url = $image_attributes[0]; // URL of the image
+
+        // Output the image tag
+        echo '<img src="' . esc_url($image_url) . '" alt="Image">';
+    }
+}
+?>
