@@ -3,6 +3,11 @@
  * included in this file.
  */
 
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
 #er {
     color: #f21515;
     background-color: #fff0f0;
@@ -152,6 +157,21 @@ p.close {
     margin: 7px 0px 0px 0px;
 }
 
+.form {
+    width: 50%;
+    margin: 0 auto;
+}
+
 .form-hidden {
     display: none;
+}
+
+.form-color {
+    display: flex;
+}
+
+.form-color-sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
