@@ -43,5 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
         registerButton.classList.add("form-hidden");
         popinName.setAttribute("disabled", true);
         console.log(registerName["popin-id"].value);
+        
+        let popinIdField = document.querySelector('.js-popin-id');
+        popinIdField.setAttribute("value", registerName["popin-id"].value);
+        // popinIdField.setAttribute("name", registerName["popin-id"].value);
+        
     });
 });
