@@ -11,15 +11,15 @@
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input id="mybtn" class="red-pop" type="submit" value="SUBSCRIBE">
-            <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
-                                                        echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
-                                                        ?></p>
+            <p class="close"><?php $examplePost = get_post(1);
+                                echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
+                                ?></p>
 
             <input type="hidden" id="formid" name="formid" value="1005">
         </form>
     </div>
 </div>
-<div id="overlay" class="overlay" onclick="closeredmodal()"> </div>
+<div id="overlay" class="overlay"> </div>
 
 <?php
 function ava_test_init()
@@ -41,12 +41,12 @@ do_action('wp_enqueue_media')
 <form action="" class="js-popin-name">
     <p>Votre nom de pop-in :</p>
     <input class="js-popin-name-input" type="text" style="margin-right: 2rem" required>
-    <button class="js-show-form">Enregistrer</button>
+    <button type="submit" class="js-show-form">Enregistrer</button>
 </form>
 <?php
-if (!empty($_POST)) {
-    var_dump($_POST);
-}
+// if (!empty($_POST)) {
+//     var_dump($_POST);
+// }
 ?>
 <form class="js-form form-hidden" action="" method="post" style="margin: 2rem 0" id="jean-louis">
     <label style="display: block" for="description">Votre description :</label>

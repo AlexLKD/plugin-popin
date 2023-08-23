@@ -31,12 +31,13 @@
 })(jQuery);
 
 const registerName = document.querySelector(".js-popin-name");
-registerName.addEventListener("submit", function () {});
 const registerButton = document.querySelector(".js-show-form");
 const form = document.querySelector(".js-form");
-const popinName = document.querySelector("js-popin-name-input");
-registerButton.addEventListener("click", function () {
-    // console.log(popinName);
-    // console.log(popinName.value);
+const popinName = document.querySelector(".js-popin-name-input");
+
+registerName.addEventListener("submit", function (event) {
+    event.preventDefault();
     form.classList.remove("form-hidden");
+    // registerButton.classList.add("form-hidden");
+    console.log(registerName);
 });
