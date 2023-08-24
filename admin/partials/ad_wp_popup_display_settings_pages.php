@@ -53,7 +53,7 @@
         <label class="label" for="description">Votre description :</label>
         <input class="textarea"  type="textarea" name="description" placeholder="Votre description">
         <label class="label" for="image">Choisissez votre image:</label>
-        <input class="input"  class="js-img-url" type="text" name="image" placeholder="Votre image" value="">
+        <input class="input js-img-url" type="text" name="image" placeholder="Votre image" value="">
         <label class="label" for="bouton">Le texte de votre bouton :</label>
         <input class="input"  type="text" name="btn" placeholder="Le texte de votre bouton">
         <div class="form-color">
