@@ -125,3 +125,28 @@ foreach ($filteredOptions as $key => $value) {
     $groupedOptions[$groupName][$key] = $value;
 }
 var_dump($groupedOptions);
+
+
+
+foreach ($groupedOptions as $key => $value) {
+    if (!empty($value["plugin_popin_" . $key . "_description"])) {
+        echo '<div id="redmodal" class="redmodal">
+            <div class="redmodal-header">
+                <div class="redmodal-title"> </div>
+                <button class="close-button"> &times; </button>
+            </div>
+            <div class="redmodal-body">
+                <form id="leadGeneration">
+                    <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+                    <div id="description">
+                        <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
+                    </div>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '">
+            
+                    <input type="hidden" id="formid" name="formid" value="1005">
+                </form>
+            </div>
+        </div>';
+    }
+}
