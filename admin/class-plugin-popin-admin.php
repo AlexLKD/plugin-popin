@@ -131,6 +131,6 @@ class Plugin_Popin_Admin
 		add_option($template_option . "button", $_POST["btn"]);
 		add_option($template_option . "color-bg", $_POST["color-bg"]);
 		add_option($template_option . "color-btn", $_POST["color-btn"]);
-		add_option($template_option . "color-btn", $_POST["color-txt"]);
+		add_option($template_option . "color-txt", $_POST["color-txt"]);
 	}
 }

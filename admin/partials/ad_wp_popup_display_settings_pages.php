@@ -81,7 +81,7 @@ function testCSS()
                 <form id="leadGeneration">
                     <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
                     <div id="description">
-                        <p id="description" style="color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">' . $value["plugin_popin_" . $key . "_description"] . ' </p>
+                        <p id="description" style="color:' . $value["plugin_popin_" . $key . "_color-txt"] . '">' . $value["plugin_popin_" . $key . "_description"] . ' </p>
                     </div>
                     <input type="email" id="email" name="email" placeholder="Email" required>
                     <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
