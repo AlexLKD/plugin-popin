@@ -70,7 +70,7 @@ jQuery(document).ready(function($) {
 
 // Lorsqu'un bouton radio est cliqué
 $('.radio-button').on('click', function(e) {
-
+    $(this).prop('disabled', true);
     const imgSrc = $(this).data('id-img');
     const description = $(this).data('id-describe');
     const buttonText = $(this).data('id-btn');
