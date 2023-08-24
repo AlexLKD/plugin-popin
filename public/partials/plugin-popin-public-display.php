@@ -23,9 +23,10 @@
 //------------------------------------------
 //------------------------------------------
 // get the option who contains plugin_popin display option to 1 and replace "test-front"
-
+$testVariable = "test-couleur-txt";
 
 // get all the options and keep only contains "plugin_popin"
+
 $alloptions = wp_load_alloptions();
 
 $model = 'plugin_popin_';
@@ -55,7 +56,7 @@ foreach ($filteredOptions as $key => $value) {
 
     $groupedOptions[$groupName][$key] = $value;
 }
-$popinActivated = $groupedOptions["test-front"];
+$popinActivated = $groupedOptions[$testVariable];
 // var_dump($popinActivated);
 
 function find_key($array, $substring) {
