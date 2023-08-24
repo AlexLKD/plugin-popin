@@ -102,7 +102,7 @@ function testCSS()
     </div>
     <form action="" class="js-popin-name">
         <p>Votre nom de pop-in :</p>
-        <input class="js-popin-name-input input" name="popin-id" type="text" required>
+        <input class="js-popin-name-input input" name="popin-id" type="text" placeholder="suivre-ce-format">
         <?= submit_button("Enregistrer") ?>
     </form>
     <?php
