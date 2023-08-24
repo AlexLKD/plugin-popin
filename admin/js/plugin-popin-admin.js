@@ -61,3 +61,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }))
 });
 
+
+const elements = document.querySelectorAll(".radio-button");
+
+jQuery(document).ready(function($) {
+    // Sélectionnez les boutons radio
+
+
+// Lorsqu'un bouton radio est cliqué
+$('.radio-button').on('click', function(e) {
+
+    const imgSrc = $(this).data('id-img');
+    const description = $(this).data('id-describe');
+    const buttonText = $(this).data('id-btn');
+    const id = $(this).data('id');
+
+    const template = document.getElementById('renameFormTemplate');
+    const clone = document.importNode(template.content, true);
+
+    clone.querySelector('img').src = imgSrc;
+    clone.querySelector('input[name="choiceText"]').value = description;
+    clone.querySelector('input[name="textBtn"]').value = buttonText;
+
+
+    document.body.appendChild(clone);
+});
+
+});
+

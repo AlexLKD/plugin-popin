@@ -67,30 +67,35 @@ function testCSS()
 <div class="container">
     <div class="display-list">
         <img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+       
         <?php
         echo '<div class="scrollable-container">';
         echo '<div class="flex-list">';
-        echo "<p>Popins disponibles :</p>";
+        echo "<p>Popins disponibles :</p>
+        <form>";
+        
         foreach ($groupedOptions as $key => $value) {
             if (!empty($value["plugin_popin_" . $key . "_description"])) {
                 echo '<div id="redmodal" class="redmodal modal-preview" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
+                <input class="radio-button" type="radio" data-id-describe="'. $value["plugin_popin_" . $key . "_description"] .'" name:"radio-'.$key.'" value="'.$key.'" data-id-img="' . $value["plugin_popin_" . $key . "_image"] . '"  data-id-btn="' . $value["plugin_popin_" . $key . "_button"] . '" data-id="'.$key.'"/>
             <div class="redmodal-header">
                 <div class="redmodal-title"> </div>
             </div>
             <div class="redmodal-body">
-                <form id="leadGeneration">
-                    <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+                <div id="leadGeneration">
+                    <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook" data-id-img="' . $value["plugin_popin_" . $key . "_image"] . '">
                     <div id="description">
-                        <p id="description" style="color:' . $value["plugin_popin_" . $key . "_color-txt"] . '">' . $value["plugin_popin_" . $key . "_description"] . ' </p>
+                    <p id="description" style="color:' . $value["plugin_popin_" . $key . "_color-txt"] . '">' . $value["plugin_popin_" . $key . "_description"] . ' </p>
                     </div>
                     <input type="email" id="email" name="email" placeholder="Email" required>
-                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
+                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '" data-id-btn="' . $value["plugin_popin_" . $key . "_button"] . '">
                     <input type="hidden" id="formid" name="formid" value="1005">
-                </form>
+                </div>
             </div>
         </div>';
             }
         }
+        echo '</form>';
         echo '</div>';
         echo '</div>';
         ?>
@@ -157,24 +162,26 @@ function testCSS()
 
 
 
-<?php
-// foreach ($groupedOptions as $key => $value) {
-//     if (!empty($value["plugin_popin_" . $key . "_description"])) {
-//         echo '<div id="redmodal" class="redmodal" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
-//             <div class="redmodal-header">
-//                 <div class="redmodal-title"> </div>
-//             </div>
-//             <div class="redmodal-body">
-//                 <form id="leadGeneration">
-//                     <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
-//                     <div id="description">
-//                         <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
-//                     </div>
-//                     <input type="email" id="email" name="email" placeholder="Email" required>
-//                     <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
-//                     <input type="hidden" id="formid" name="formid" value="1005">
-//                 </form>
-//             </div>
-//         </div>';
-//     }
-// }
+<template id="renameFormTemplate">
+    <form action="" method="update" data-form-id="">
+    <div id="redmodal" class="redmodal modal-preview" >
+            <div class="redmodal-header">
+                <div class="redmodal-title"> </div>
+            </div>
+            <div class="redmodal-body">
+                <div id="leadGeneration">
+                <img  class="center-image" type="text" name="img" src="">
+                    <div id="description">
+                    <input type="text" name="choiceText" value="">
+            
+                    </div>
+                    <input type="email" id="email" name="email" placeholder="Email" >
+                    <input type="text" name="textBtn" value="">
+                    <input type="hidden" id="formid" name="formid" value="1005">
+                    <input type="submit" value="valider">
+                </div>
+            </div>
+        </div>
+
+        </form>
+    </template>
