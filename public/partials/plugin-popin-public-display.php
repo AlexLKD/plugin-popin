@@ -18,8 +18,14 @@
 
 <?php 
 
-// get the option who contains plugin_popin and 
 
+//------------------------------------------
+//------------------------------------------
+//------------------------------------------
+// get the option who contains plugin_popin display option to 1 and replace "test-front"
+
+
+// get all the options and keep only contains "plugin_popin"
 $alloptions = wp_load_alloptions();
 
 $model = 'plugin_popin_';
@@ -33,11 +39,14 @@ foreach ($alloptions as $key => $value) {
 // var_dump($filteredOptions);
 
 
+
+// group all the rows by there plugin id
 $groupedOptions = array();
 
 foreach ($filteredOptions as $key => $value) {
 
     $parts = explode('_', $key);
+    // place of the plugin id in string
     $groupName = $parts[2];
 
     if (!isset($groupedOptions[$groupName])) {
@@ -60,6 +69,8 @@ function find_key($array, $substring) {
     return $matching_key;
 }
 
+
+// get all the values needed in variables
 $backgroundColor = find_key($popinActivated, "color-bg");
 $buttonColor = find_key($popinActivated, "color-btn");
 $description = find_key($popinActivated, "description");
@@ -74,10 +85,6 @@ $button = find_key($popinActivated, "button");
 
 
 
-
-<!-- <template id="template-popin">
-
-</template> -->
 <div id="redmodal" class="redmodal" style="background-color: <?=$popinActivated[$backgroundColor[0]]?>; display: none">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>

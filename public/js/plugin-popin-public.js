@@ -32,52 +32,52 @@
 })( jQuery );
 
 
-// document.addEventListener("DOMContentLoaded", function () {
 
-	let show = true;
-	document.querySelector("#redmodal").style.display = "block";
-	document.querySelector("#overlay").style.display = "block";
-	document.querySelector("#redmodal").addEventListener("DOMNodeInserted", () => {
-		setTimeout(closeKp, 3000);
-	});
+let show = true;
+document.querySelector("#redmodal").style.display = "block";
+document.querySelector("#overlay").style.display = "block";
+document.querySelector("#redmodal").addEventListener("DOMNodeInserted", () => {
+	setTimeout(closeKp, 3000);
+});
+
+if (show == true) {
+	window.addEventListener('load', ShowPopup);
+}
+
+
+const cross = document.querySelector(".js-close-button");
+const overlay = document.querySelector('.js-overlay');
+
+
+// put in an array all the interactions elements where we want to allow the closing of pop-in by clicking on it
+const closedInteractionOptions = [];
+closedInteractionOptions.push(cross);
+closedInteractionOptions.push(overlay);
+
+closedInteractionOptions.forEach((option) => {
+	option.addEventListener("click", closeredmodal);
+});
 	
-	function closeKp() {
-		if (document.querySelector('form div#success')) {
-			closeredmodal();
-		}
+	
+function closeKp() {
+	if (document.querySelector('form div#success')) {
+		closeredmodal();
 	}
-	if (show == true) {
-		window.addEventListener('load', ShowPopup);
-	}
-	
-	function ShowPopup() {
-	
-		setTimeout(e =>
-			document.querySelector('#redmodal').classList.remove('hiden'), 100)
-		setTimeout(function() {
-			document.querySelector('#overlay').classList.add('active');
-			document.querySelector('#redmodal').classList.add('active');
-	
-		}, 2 * 1000 )
-	}
-	
-	const cross = document.querySelector(".js-close-button");
-	const overlay = document.querySelector('.js-overlay');
-	
-	const closedInteractionOptions = [];
-	closedInteractionOptions.push(cross);
-	closedInteractionOptions.push(overlay);
+}
 
-	closedInteractionOptions.forEach((option) => {
-		option.addEventListener("click", closeredmodal);
-	});
+function closeredmodal() {
+	document.querySelector('#redmodal.active').classList.remove('active');
+	document.querySelector('#overlay.active').classList.remove('active');
+}
 
-	
 
-	function closeredmodal() {
-		document.querySelector('#redmodal.active').classList.remove('active');
-		document.querySelector('#overlay.active').classList.remove('active');
-	}
-	
+function ShowPopup() {
+setTimeout(e =>
+	document.querySelector('#redmodal').classList.remove('hiden'), 100)
+	setTimeout(function() {
+		document.querySelector('#overlay').classList.add('active');
+		document.querySelector('#redmodal').classList.add('active');
+		
+	}, 2 * 1000 )
+}
 
-// })
