@@ -148,6 +148,7 @@ input#email:focus {
 
 input.red-pop {
     width: 100%;
+    padding: 1rem 0;
     margin-top: 10px;
     color: white;
     background-color: #2e2e2e;

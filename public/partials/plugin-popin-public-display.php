@@ -18,7 +18,7 @@
 
 <?php 
 
-
+// get the option who contains plugin_popin and 
 
 $alloptions = wp_load_alloptions();
 
@@ -50,14 +50,14 @@ $popinActivated = $groupedOptions["test-front"];
 // var_dump($popinActivated);
 
 function find_key($array, $substring) {
-    $matching_keys = [];
+    $matching_key = [];
     foreach ($array as $key => $value) {
         if (strpos($key, $substring) !== false) {
-            $matching_keys[] = $key;
-            $matching_keys[$key] = $value;
+            $matching_key[] = $key;
+            $matching_key[$key] = $value;
         }
     }
-    return $matching_keys;
+    return $matching_key;
 }
 
 $backgroundColor = find_key($popinActivated, "color-bg");
@@ -71,7 +71,14 @@ $button = find_key($popinActivated, "button");
 
 ?>
 
-<div id="redmodal" class="redmodal" style="background-color: <?=$popinActivated[$backgroundColor[0]]?>">
+
+
+
+
+<!-- <template id="template-popin">
+
+</template> -->
+<div id="redmodal" class="redmodal" style="background-color: <?=$popinActivated[$backgroundColor[0]]?>; display: none">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
         <button class="close-button js-close-button"> &times; </button>
@@ -90,4 +97,4 @@ $button = find_key($popinActivated, "button");
         </form>
     </div>
 </div>
-<div id="overlay" class="overlay js-overlay"> </div>
+<div id="overlay" class="overlay js-overlay" style="display: none"> </div>

@@ -33,9 +33,12 @@
 
 
 // document.addEventListener("DOMContentLoaded", function () {
+
 	let show = true;
+	document.querySelector("#redmodal").style.display = "block";
+	document.querySelector("#overlay").style.display = "block";
 	document.querySelector("#redmodal").addEventListener("DOMNodeInserted", () => {
-		setTimeout(closeKp, 3000)
+		setTimeout(closeKp, 3000);
 	});
 	
 	function closeKp() {
