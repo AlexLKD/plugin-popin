@@ -105,7 +105,8 @@ $button = find_key($popinActivated, "button");
         <form id="leadGeneration">
             <img class="center-image" src="<?=$popinActivated[$image[0]]?>" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
             <div id="description">
-                <p id="description"><?=$popinActivated[$description[0]]?></p>
+                <!-- <p id="description"><?=$popinActivated[$description[0]]?></p> -->
+                <p id="description"><?=str_replace('\\', '', $popinActivated[$description[0]])?></p>
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input id="mybtn" class="red-pop" type="submit" style="background-color: <?=$popinActivated[$buttonColor[0]]?>" value="<?=$popinActivated[$button[0]]?>">
