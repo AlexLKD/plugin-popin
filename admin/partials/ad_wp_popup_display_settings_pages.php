@@ -116,15 +116,15 @@ function testCSS()
         <div class="form-color">
             <div class="form-color-sub">
                 <label class="label" for="bouton"> Couleur de fond :</label>
-                <input class="input" type="color" name="color-bg" placeholder="">
+                <input class="input" type="color" name="color-bg" placeholder="" value="#ffffff">
             </div>
             <div class="form-color-sub">
                 <label class="label" for="bouton">Couleur du bouton :</label>
-                <input class="input" type="color" name="color-btn" placeholder="">
+                <input class="input" type="color" name="color-btn" placeholder="" value="#2e2e2e">
             </div>
             <div class="form-color-sub">
                 <label class="label" for="bouton">Couleur de la description :</label>
-                <input class="input" type="color" name="color-txt" placeholder="">
+                <input class="input" type="color" name="color-txt" placeholder="" value="#3c434a">
             </div>
         </div>
         <?= submit_button() ?>
