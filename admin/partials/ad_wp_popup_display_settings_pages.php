@@ -53,7 +53,7 @@
         <label style="display: block" for="description">Votre description :</label>
         <input style="display: block" type="text" name="description" placeholder="Votre description">
         <label style="display: block" for="image">Choisissez votre image:</label>
-        <input style="display: block" type="text" name="image" placeholder="Votre image">
+        <input class="js-img-url" style="display: block" type="text" name="image" placeholder="Votre image" value="">
         <label style="display: block" for="bouton">Le texte de votre bouton :</label>
         <input style="display: block" type="text" name="btn" placeholder="Le texte de votre bouton">
         <div class="form-color">
@@ -86,7 +86,7 @@
             $image_url = $image_attributes[0]; // URL of the image
 
             // Output the image tag
-            echo '<img src="' . esc_url($image_url) . '" alt="Image">';
+            echo '<img class="js-img gallery-img" src="' . esc_url($image_url) . '" alt="Image">';
         }
     }
     ?>

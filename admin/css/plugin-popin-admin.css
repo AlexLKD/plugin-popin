@@ -187,3 +187,8 @@ p.close {
     display: inline-block;
     margin: 0 auto;
 }
+
+
+.gallery-img:hover {
+    cursor: pointer;
+}
