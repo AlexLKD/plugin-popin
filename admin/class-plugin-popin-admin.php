@@ -124,13 +124,76 @@ class Plugin_Popin_Admin
 	public function wp_popup_register_option_in_database()
 	{
 		if (empty($_POST)) return;
-		$idPopin = $_POST["popin-id-name"];
-		$template_option = "plugin_popin_" . $idPopin . "_";
-		add_option($template_option . "description", $_POST["description"]);
-		add_option($template_option . "image", $_POST["image"]);
-		add_option($template_option . "button", $_POST["btn"]);
-		add_option($template_option . "color-bg", $_POST["color-bg"]);
-		add_option($template_option . "color-btn", $_POST["color-btn"]);
-		add_option($template_option . "color-txt", $_POST["color-txt"]);
+		
+		// var_dump($_POST["form-action"]); 
+		if ($_POST["form-action"] == "register-in-database") {
+			$idPopin = $_POST["popin-id-name"];
+			$template_option = "plugin_popin_" . $idPopin . "_";
+			add_option($template_option . "description", $_POST["description"]);
+			add_option($template_option . "image", $_POST["image"]);
+			add_option($template_option . "button", $_POST["btn"]);
+			add_option($template_option . "color-bg", $_POST["color-bg"]);
+			add_option($template_option . "color-btn", $_POST["color-btn"]);
+			add_option($template_option . "color-txt", $_POST["color-txt"]);
+			add_option($template_option . "activated", $_POST["activated"]);
+		}
 	}
+
+
+	public function wp_popup_update_popin_activation_option() {
+		if (empty($_POST)) return;
+
+		if ($_POST["form-action"] == "update-activate") {
+			// var_dump($_POST);
+			$idPopin = $_POST["id-popin"];
+			$template_option = "plugin_popin_";
+			$template_option_with_id = "plugin_popin_" . $idPopin . "_";
+			// update_option($template_option_with_id . "activated", 1);
+
+
+
+
+			$alloptions = wp_load_alloptions();
+
+			$model = 'plugin_popin_';
+			$filteredOptions = array();
+
+			foreach ($alloptions as $key => $value) {
+				if (strpos($key, $model) === 0) {
+					$filteredOptions[$key] = $value;
+				}
+			}
+			// var_dump($filteredOptions);
+
+
+			$groupedOptions = array();
+
+			foreach ($filteredOptions as $key => $value) {
+
+				$parts = explode('_', $key);
+				$groupName = $parts[2];
+				if((!(in_array($groupName, $groupedOptions))) && (!(empty($groupName)))) {
+					$groupedOptions[] = $groupName;
+				} 				
+
+				// if (!isset($groupedOptions[$groupName])) {
+				// 	$groupedOptions[$groupName] = array();
+				// }
+
+				// $groupedOptions[$groupName][$key] = $value;
+			}
+			// var_dump($groupedOptions);
+
+			foreach($groupedOptions as $value) {
+				if($value != $idPopin) {
+					update_option("" . $template_option . $value . "_activated", 0);
+					// var_dump("" . $template_option . $value . "_activated", get_option("" . $template_option . $value . "_activated"));
+				}
+			}
+
+		}
+
+	}
+
+
 }
