@@ -53,7 +53,7 @@
         <label class="label" for="description">Votre description :</label>
         <input class="textarea" type="textarea" name="description" placeholder="Votre description">
         <label class="label" for="image">Choisissez votre image:</label>
-        <input class="input" class="js-img-url" type="text" name="image" placeholder="Votre image" value="">
+        <input class="input js-img-url" type="text" name="image" placeholder="Votre image" value="">
         <label class="label" for="bouton">Le texte de votre bouton :</label>
         <input class="input" type="text" name="btn" placeholder="Le texte de votre bouton">
         <div class="form-color">
@@ -130,7 +130,7 @@ var_dump($groupedOptions);
 
 foreach ($groupedOptions as $key => $value) {
     if (!empty($value["plugin_popin_" . $key . "_description"])) {
-        echo '<div id="redmodal" class="redmodal">
+        echo '<div id="redmodal" class="redmodal" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
             <div class="redmodal-header">
                 <div class="redmodal-title"> </div>
                 <button class="close-button"> &times; </button>
@@ -142,8 +142,7 @@ foreach ($groupedOptions as $key => $value) {
                         <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
                     </div>
                     <input type="email" id="email" name="email" placeholder="Email" required>
-                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '">
-            
+                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
                     <input type="hidden" id="formid" name="formid" value="1005">
                 </form>
             </div>
