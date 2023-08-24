@@ -46,9 +46,8 @@ foreach ($filteredOptions as $key => $value) {
 
     $groupedOptions[$groupName][$key] = $value;
 }
-var_dump($groupedOptions["test-front"]);
 $popinActivated = $groupedOptions["test-front"];
-var_dump($popinActivated);
+// var_dump($popinActivated);
 
 function find_key($array, $substring) {
     $matching_keys = [];
@@ -66,33 +65,13 @@ $buttonColor = find_key($popinActivated, "color-btn");
 $description = find_key($popinActivated, "description");
 $image = find_key($popinActivated, "image");
 $button = find_key($popinActivated, "button");
-var_dump($image[0]);
-var_dump($popinActivated[$image[0]]);
+// var_dump($image[0]);
+// var_dump($popinActivated[$image[0]]);
 
-// foreach ($groupedOptions["test-front"] as $key => $value) {
-//     if (!empty($value["plugin_popin_" . $key . "_description"])) {
-//         echo '<div id="redmodal" class="redmodal" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
-//             <div class="redmodal-header">
-//                 <div class="redmodal-title"> </div>
-//                 <button class="close-button js-close-button"> &times; </button>
-//             </div>
-//             <div class="redmodal-body">
-//                 <form id="leadGeneration">
-//                     <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
-//                     <div id="description">
-//                         <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
-//                     </div>
-//                     <input type="email" id="email" name="email" placeholder="Email" required>
-//                     <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
-//                     <input type="hidden" id="formid" name="formid" value="1005">
-//                 </form>
-//             </div>
-//         </div>';
-//     }
-// }
+
 ?>
 
-<div id="redmodal" class="redmodal" style="background-color:' <?$popinActivated[$backgroundColor[0]]?> '">
+<div id="redmodal" class="redmodal" style="background-color: <?=$popinActivated[$backgroundColor[0]]?>">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
         <button class="close-button js-close-button"> &times; </button>
@@ -104,7 +83,8 @@ var_dump($popinActivated[$image[0]]);
                 <p id="description"><?=$popinActivated[$description[0]]?></p>
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
-            <input id="mybtn" class="red-pop" type="submit" value="<?=$popinActivated[$button[0]]?>" >
+            <input id="mybtn" class="red-pop" type="submit" style="background-color: <?=$popinActivated[$buttonColor[0]]?>" value="<?=$popinActivated[$button[0]]?>">
+            <!-- <button id="mybtn" class="red-pop" type="submit" style="background-color: <?=$popinActivated[$buttonColor[0]]?>"><?=$popinActivated[$button[0]]?></button> -->
 
     <input type="hidden" id="formid" name="formid" value="1005">
         </form>
