@@ -125,3 +125,10 @@ foreach ($filteredOptions as $key => $value) {
     $groupedOptions[$groupName][$key] = $value;
 }
 var_dump($groupedOptions);
+
+
+foreach ($groupedOptions as $key => $value) {
+    $image = $value['plugin_popin_' . $key . '_image'];
+    echo "<img src='$image' > 
+    <p> $key </p>";
+}
