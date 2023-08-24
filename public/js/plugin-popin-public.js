@@ -32,7 +32,7 @@
 })( jQuery );
 
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 	let show = true;
 	document.querySelector("#redmodal").addEventListener("DOMNodeInserted", () => {
 		setTimeout(closeKp, 3000)
@@ -77,4 +77,4 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	
 
-})
+// })

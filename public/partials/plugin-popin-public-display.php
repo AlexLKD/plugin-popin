@@ -16,21 +16,95 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
 
+<?php 
 
 
-<div id="redmodal" class="redmodal">
+
+$alloptions = wp_load_alloptions();
+
+$model = 'plugin_popin_';
+$filteredOptions = array();
+
+foreach ($alloptions as $key => $value) {
+    if (strpos($key, $model) === 0) {
+        $filteredOptions[$key] = $value;
+    }
+}
+// var_dump($filteredOptions);
+
+
+$groupedOptions = array();
+
+foreach ($filteredOptions as $key => $value) {
+
+    $parts = explode('_', $key);
+    $groupName = $parts[2];
+
+    if (!isset($groupedOptions[$groupName])) {
+        $groupedOptions[$groupName] = array();
+    }
+
+    $groupedOptions[$groupName][$key] = $value;
+}
+var_dump($groupedOptions["test-front"]);
+$popinActivated = $groupedOptions["test-front"];
+var_dump($popinActivated);
+
+function find_key($array, $substring) {
+    $matching_keys = [];
+    foreach ($array as $key => $value) {
+        if (strpos($key, $substring) !== false) {
+            $matching_keys[] = $key;
+            $matching_keys[$key] = $value;
+        }
+    }
+    return $matching_keys;
+}
+
+$backgroundColor = find_key($popinActivated, "color-bg");
+$buttonColor = find_key($popinActivated, "color-btn");
+$description = find_key($popinActivated, "description");
+$image = find_key($popinActivated, "image");
+$button = find_key($popinActivated, "button");
+var_dump($image[0]);
+var_dump($popinActivated[$image[0]]);
+
+// foreach ($groupedOptions["test-front"] as $key => $value) {
+//     if (!empty($value["plugin_popin_" . $key . "_description"])) {
+//         echo '<div id="redmodal" class="redmodal" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
+//             <div class="redmodal-header">
+//                 <div class="redmodal-title"> </div>
+//                 <button class="close-button js-close-button"> &times; </button>
+//             </div>
+//             <div class="redmodal-body">
+//                 <form id="leadGeneration">
+//                     <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+//                     <div id="description">
+//                         <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
+//                     </div>
+//                     <input type="email" id="email" name="email" placeholder="Email" required>
+//                     <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
+//                     <input type="hidden" id="formid" name="formid" value="1005">
+//                 </form>
+//             </div>
+//         </div>';
+//     }
+// }
+?>
+
+<div id="redmodal" class="redmodal" style="background-color:' <?$popinActivated[$backgroundColor[0]]?> '">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
         <button class="close-button js-close-button"> &times; </button>
     </div>
     <div class="redmodal-body">
         <form id="leadGeneration">
-            <img class="center-image" src="https://i.postimg.cc/g265XXpg/newsletter-signup-examples.webp" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+            <img class="center-image" src="<?=$popinActivated[$image[0]]?>" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
             <div id="description">
-                <p id="description">Subscribe now for hand-picked holiday deals, inspiration and latest tips, straight to your inbox.</p>
+                <p id="description"><?=$popinActivated[$description[0]]?></p>
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
-            <input id="mybtn" class="red-pop" type="submit" value="SUBSCRIBE">
+            <input id="mybtn" class="red-pop" type="submit" value="<?=$popinActivated[$button[0]]?>" >
 
     <input type="hidden" id="formid" name="formid" value="1005">
         </form>
