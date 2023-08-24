@@ -44,7 +44,7 @@ foreach ($alloptions as $key => $value) {
 
 // group all the rows by there plugin id
 $groupedOptions = array();
-
+$popinKeys = [];
 foreach ($filteredOptions as $key => $value) {
 
     $parts = explode('_', $key);
@@ -53,15 +53,21 @@ foreach ($filteredOptions as $key => $value) {
 
     if (!isset($groupedOptions[$groupName])) {
         $groupedOptions[$groupName] = array();
+        $popinKeys[] = $groupName;
     }
 
     $groupedOptions[$groupName][$key] = $value;
 }
 
-var_dump($groupedOptions);
+// var_dump($groupedOptions);
+var_dump($popinKeys);
+foreach($popinKeys as $key) {
+    if(get_option("plugin_popin_" . $key . "_activated") == "1") {
+        $popinActivated = $groupedOptions[$key];
+    }
+}
 
-$popinActivated = $groupedOptions[$testVariable];
-// var_dump($popinActivated);
+
 
 function find_key($array, $substring) {
     $matching_key = [];
