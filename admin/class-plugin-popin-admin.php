@@ -148,7 +148,7 @@ class Plugin_Popin_Admin
 			$idPopin = $_POST["id-popin"];
 			$template_option = "plugin_popin_";
 			$template_option_with_id = "plugin_popin_" . $idPopin . "_";
-			// update_option($template_option_with_id . "activated", 1);
+			update_option($template_option_with_id . "activated", 1);
 
 
 

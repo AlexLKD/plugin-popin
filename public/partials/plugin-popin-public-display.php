@@ -23,6 +23,7 @@
 //------------------------------------------
 //------------------------------------------
 // get the option who contains plugin_popin display option to 1 and replace "test-front"
+// var_dump(get_option)
 $testVariable = "test-couleur-txt";
 
 // get all the options and keep only contains "plugin_popin"
@@ -56,6 +57,9 @@ foreach ($filteredOptions as $key => $value) {
 
     $groupedOptions[$groupName][$key] = $value;
 }
+
+var_dump($groupedOptions);
+
 $popinActivated = $groupedOptions[$testVariable];
 // var_dump($popinActivated);
 
