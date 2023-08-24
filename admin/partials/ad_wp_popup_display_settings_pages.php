@@ -97,3 +97,31 @@
 <?php
 $test = get_option('plugin_popin_popin-plugin_description');
 // var_dump($test);
+
+$alloptions = wp_load_alloptions();
+
+$model = 'plugin_popin_'; 
+$filteredOptions = array();
+
+foreach ($alloptions as $key => $value) {
+    if (strpos($key, $model) === 0) {
+        $filteredOptions[$key] = $value;
+    }
+}
+var_dump($filteredOptions);
+
+
+$groupedOptions = array();
+
+foreach ($filteredOptions as $key => $value) {
+    
+    $parts = explode('_', $key);
+    $groupName = $parts[2]; 
+
+    if (!isset($groupedOptions[$groupName])) {
+        $groupedOptions[$groupName] = array();
+    }
+
+    $groupedOptions[$groupName][$key] = $value;
+}
+var_dump($groupedOptions);
