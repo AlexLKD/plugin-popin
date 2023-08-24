@@ -40,7 +40,7 @@
 
     <form action="" class="js-popin-name">
         <p>Votre nom de pop-in :</p>
-        <input class="js-popin-name-input" name="popin-id" type="text" style="margin-right: 2rem" required>
+        <input class="js-popin-name-input input" name="popin-id" type="text" required>
         <?= submit_button("Enregistrer") ?>
     </form>
     <?php
@@ -48,22 +48,22 @@
         var_dump($_POST);
     }
     ?>
-    <form class="js-form form-hidden" action="" method="post" style="margin: 2rem 0" id="jean-louis">
-        <input class="js-popin-id" name="popin-id-name" type="hidden" value="">
-        <label style="display: block" for="description">Votre description :</label>
-        <input style="display: block" type="text" name="description" placeholder="Votre description">
-        <label style="display: block" for="image">Choisissez votre image:</label>
-        <input class="js-img-url" style="display: block" type="text" name="image" placeholder="Votre image" value="">
-        <label style="display: block" for="bouton">Le texte de votre bouton :</label>
-        <input style="display: block" type="text" name="btn" placeholder="Le texte de votre bouton">
+    <form class="js-form form-hidden" action="" method="post" id="">
+        <input class="js-popin-id input" name="popin-id-name" type="hidden" value="">
+        <label class="label" for="description">Votre description :</label>
+        <input class="textarea"  type="textarea" name="description" placeholder="Votre description">
+        <label class="label" for="image">Choisissez votre image:</label>
+        <input class="input"  class="js-img-url" type="text" name="image" placeholder="Votre image" value="">
+        <label class="label" for="bouton">Le texte de votre bouton :</label>
+        <input class="input"  type="text" name="btn" placeholder="Le texte de votre bouton">
         <div class="form-color">
             <div class="form-color-sub">
-                <label style="display: block" for="bouton"> Couleur de fond :</label>
-                <input style="display: block" type="color" name="color-bg" placeholder="">
+                <label class="label" for="bouton"> Couleur de fond :</label>
+                <input class="input" type="color" name="color-bg" placeholder="">
             </div>
             <div class="form-color-sub">
-                <label style="display: block" for="bouton">Couleur du bouton :</label>
-                <input style="display: block" type="color" name="color-btn" placeholder="">
+                <label class="label" for="bouton">Couleur du bouton :</label>
+                <input class="input" type="color" name="color-btn" placeholder="">
             </div>
         </div>
         <?= submit_button() ?>

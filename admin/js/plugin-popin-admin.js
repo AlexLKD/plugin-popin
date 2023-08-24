@@ -47,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // popinIdField.setAttribute("name", registerName["popin-id"].value);
     });
     //---------------
+
+    
+
+
     //---------------
     
     const allImg = document.querySelectorAll(".js-img");

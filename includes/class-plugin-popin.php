@@ -157,6 +157,8 @@ class Plugin_Popin
 		$plugin_admin = new Plugin_Popin_Admin($this->get_plugin_name(), $this->get_version());
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_admin, 'enqueue_plugin_styles');
+
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 		$this->loader->add_action('admin_menu', $plugin_admin, 'wp_popup_display_settings_pages');
 		$this->loader->add_action('admin_init', $plugin_admin, 'wp_popup_register_option_in_database');

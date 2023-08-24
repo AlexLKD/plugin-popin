@@ -166,6 +166,11 @@ p.close {
     display: none;
 }
 
+.label {
+    display: block;
+}
+
+
 .form-color {
     display: flex;
 }
