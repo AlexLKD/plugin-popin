@@ -29,7 +29,7 @@
 }
 
 .redmodal {
-    margin-top: 100px;
+    margin: 10px auto;
     background: white;
     border-radius: 5px;
     box-shadow: 0px 5px 15px 0px #00000057;
@@ -170,7 +170,6 @@ p.close {
     display: block;
 }
 
-
 .form-color {
     display: flex;
 }
@@ -193,7 +192,28 @@ p.close {
     margin: 0 auto;
 }
 
-
 .gallery-img:hover {
     cursor: pointer;
+}
+
+.display-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-preview {
+    width: 400px;
+    /* height: 400px; */
+}
+.scrollable-container {
+    margin-top: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
 }

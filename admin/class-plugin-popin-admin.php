@@ -89,8 +89,9 @@ class Plugin_Popin_Admin
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/plugin-popin-admin.css', array(), $this->version, 'all');
 	}
-	
-	function enqueue_plugin_styles() {
+
+	function enqueue_plugin_styles()
+	{
 		wp_enqueue_style('wp-core-styles', false); // Inclut les styles de base de WordPress
 	}
 
@@ -130,11 +131,6 @@ class Plugin_Popin_Admin
 		add_option($template_option . "button", $_POST["btn"]);
 		add_option($template_option . "color-bg", $_POST["color-bg"]);
 		add_option($template_option . "color-btn", $_POST["color-btn"]);
+		add_option($template_option . "color-btn", $_POST["color-txt"]);
 	}
-
-
-
-
-
-	
 }

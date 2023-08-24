@@ -1,8 +1,47 @@
-<div class="container">
-    <img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+<?php
+$test = get_option('plugin_popin_popin-plugin_description');
+// var_dump($test);
+
+$alloptions = wp_load_alloptions();
+
+$model = 'plugin_popin_';
+$filteredOptions = array();
+
+foreach ($alloptions as $key => $value) {
+    if (strpos($key, $model) === 0) {
+        $filteredOptions[$key] = $value;
+    }
+}
+// var_dump($filteredOptions);
 
 
-    <!-- <div id="redmodal" class="redmodal">
+$groupedOptions = array();
+
+foreach ($filteredOptions as $key => $value) {
+
+    $parts = explode('_', $key);
+    $groupName = $parts[2];
+
+    if (!isset($groupedOptions[$groupName])) {
+        $groupedOptions[$groupName] = array();
+    }
+
+    $groupedOptions[$groupName][$key] = $value;
+}
+// var_dump($groupedOptions);
+?>
+<?php
+function ava_test_init()
+{
+    wp_enqueue_script('ava-test-js', plugins_url('.../js/plugin-popin-admin.js', __FILE__));
+}
+
+function testCSS()
+{
+    wp_enqueue_style("test-css", plugins_url('.../css/plugin-popin-admin.css', __FILE__));
+}
+?>
+<!-- <div id="redmodal" class="redmodal">
     <div class="redmodal-header">
         <div class="redmodal-title"> </div>
         <button class="close-button"> &times; </button>
@@ -15,29 +54,47 @@
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input id="mybtn" class="red-pop" type="submit" value="SUBSCRIBE"> -->
-    <!-- <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
-                                                    echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
-                                                    ?></p> -->
+<!-- <p class="close" onclick="closeredmodal()"><?php $examplePost = get_post(1);
+                                                echo apply_filters('the_title', $examplePost->post_title); // Do this instead 
+                                                ?></p> -->
 
-    <!-- <input type="hidden" id="formid" name="formid" value="1005">
+<!-- <input type="hidden" id="formid" name="formid" value="1005">
         </form>
     </div>
 </div>
 <div id="overlay" class="overlay" onclick="closeredmodal()"> </div> -->
 
-    <?php
-    function ava_test_init()
-    {
-        wp_enqueue_script('ava-test-js', plugins_url('.../js/plugin-popin-admin.js', __FILE__));
-    }
-
-    function testCSS()
-    {
-        wp_enqueue_style("test-css", plugins_url('.../css/plugin-popin-admin.css', __FILE__));
-    }
-    ?>
-
-
+<div class="container">
+    <div class="display-list">
+        <img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+        <?php
+        echo '<div class="scrollable-container">';
+        echo '<div class="flex-list">';
+        echo "<p>Popins disponibles :</p>";
+        foreach ($groupedOptions as $key => $value) {
+            if (!empty($value["plugin_popin_" . $key . "_description"])) {
+                echo '<div id="redmodal" class="redmodal modal-preview" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
+            <div class="redmodal-header">
+                <div class="redmodal-title"> </div>
+            </div>
+            <div class="redmodal-body">
+                <form id="leadGeneration">
+                    <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+                    <div id="description">
+                        <p id="description" style="color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">' . $value["plugin_popin_" . $key . "_description"] . ' </p>
+                    </div>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
+                    <input type="hidden" id="formid" name="formid" value="1005">
+                </form>
+            </div>
+        </div>';
+            }
+        }
+        echo '</div>';
+        echo '</div>';
+        ?>
+    </div>
     <form action="" class="js-popin-name">
         <p>Votre nom de pop-in :</p>
         <input class="js-popin-name-input input" name="popin-id" type="text" required>
@@ -64,6 +121,10 @@
             <div class="form-color-sub">
                 <label class="label" for="bouton">Couleur du bouton :</label>
                 <input class="input" type="color" name="color-btn" placeholder="">
+            </div>
+            <div class="form-color-sub">
+                <label class="label" for="bouton">Couleur de la description :</label>
+                <input class="input" type="color" name="color-txt" placeholder="">
             </div>
         </div>
         <?= submit_button() ?>
@@ -94,58 +155,26 @@
 
 </div>
 
+
+
 <?php
-$test = get_option('plugin_popin_popin-plugin_description');
-// var_dump($test);
-
-$alloptions = wp_load_alloptions();
-
-$model = 'plugin_popin_';
-$filteredOptions = array();
-
-foreach ($alloptions as $key => $value) {
-    if (strpos($key, $model) === 0) {
-        $filteredOptions[$key] = $value;
-    }
-}
-var_dump($filteredOptions);
-
-
-$groupedOptions = array();
-
-foreach ($filteredOptions as $key => $value) {
-
-    $parts = explode('_', $key);
-    $groupName = $parts[2];
-
-    if (!isset($groupedOptions[$groupName])) {
-        $groupedOptions[$groupName] = array();
-    }
-
-    $groupedOptions[$groupName][$key] = $value;
-}
-var_dump($groupedOptions);
-
-
-
-foreach ($groupedOptions as $key => $value) {
-    if (!empty($value["plugin_popin_" . $key . "_description"])) {
-        echo '<div id="redmodal" class="redmodal" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
-            <div class="redmodal-header">
-                <div class="redmodal-title"> </div>
-                <button class="close-button"> &times; </button>
-            </div>
-            <div class="redmodal-body">
-                <form id="leadGeneration">
-                    <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
-                    <div id="description">
-                        <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
-                    </div>
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                    <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
-                    <input type="hidden" id="formid" name="formid" value="1005">
-                </form>
-            </div>
-        </div>';
-    }
-}
+// foreach ($groupedOptions as $key => $value) {
+//     if (!empty($value["plugin_popin_" . $key . "_description"])) {
+//         echo '<div id="redmodal" class="redmodal" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">
+//             <div class="redmodal-header">
+//                 <div class="redmodal-title"> </div>
+//             </div>
+//             <div class="redmodal-body">
+//                 <form id="leadGeneration">
+//                     <img class="center-image" src="' . $value["plugin_popin_" . $key . "_image"] . '" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
+//                     <div id="description">
+//                         <p id="description">' . $value["plugin_popin_" . $key . "_description"] . '</p>
+//                     </div>
+//                     <input type="email" id="email" name="email" placeholder="Email" required>
+//                     <input id="mybtn" class="red-pop" type="submit" value="' . $value["plugin_popin_" . $key . "_button"] . '" style="background-color:' . $value["plugin_popin_" . $key . "_color-btn"] . '">
+//                     <input type="hidden" id="formid" name="formid" value="1005">
+//                 </form>
+//             </div>
+//         </div>';
+//     }
+// }
