@@ -51,11 +51,11 @@
     <form class="js-form form-hidden" action="" method="post" id="">
         <input class="js-popin-id input" name="popin-id-name" type="hidden" value="">
         <label class="label" for="description">Votre description :</label>
-        <input class="textarea"  type="textarea" name="description" placeholder="Votre description">
+        <input class="textarea" type="textarea" name="description" placeholder="Votre description">
         <label class="label" for="image">Choisissez votre image:</label>
-        <input class="input"  class="js-img-url" type="text" name="image" placeholder="Votre image" value="">
+        <input class="input" class="js-img-url" type="text" name="image" placeholder="Votre image" value="">
         <label class="label" for="bouton">Le texte de votre bouton :</label>
-        <input class="input"  type="text" name="btn" placeholder="Le texte de votre bouton">
+        <input class="input" type="text" name="btn" placeholder="Le texte de votre bouton">
         <div class="form-color">
             <div class="form-color-sub">
                 <label class="label" for="bouton"> Couleur de fond :</label>
@@ -100,7 +100,7 @@ $test = get_option('plugin_popin_popin-plugin_description');
 
 $alloptions = wp_load_alloptions();
 
-$model = 'plugin_popin_'; 
+$model = 'plugin_popin_';
 $filteredOptions = array();
 
 foreach ($alloptions as $key => $value) {
@@ -114,9 +114,9 @@ var_dump($filteredOptions);
 $groupedOptions = array();
 
 foreach ($filteredOptions as $key => $value) {
-    
+
     $parts = explode('_', $key);
-    $groupName = $parts[2]; 
+    $groupName = $parts[2];
 
     if (!isset($groupedOptions[$groupName])) {
         $groupedOptions[$groupName] = array();
