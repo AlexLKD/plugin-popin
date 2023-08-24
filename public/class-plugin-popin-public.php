@@ -54,6 +54,15 @@ class Plugin_Popin_Public {
 
 	}
 
+
+
+
+	public function wp_popin_display_popin() {
+		require_once('partials/plugin-popin-public-display.php');
+	}
+
+
+
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
