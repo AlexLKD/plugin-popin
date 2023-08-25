@@ -217,3 +217,10 @@ p.close {
     overflow-y: auto;
     border: 1px solid #ccc;
 }
+
+
+.edit-form {
+    display: flex;
+    padding-top: .5rem;
+    align-items: center;
+}

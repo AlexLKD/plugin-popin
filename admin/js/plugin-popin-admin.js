@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     registerName.addEventListener("submit", function (event) {
         event.preventDefault();
+        if((registerName["popin-id"].value).includes('_') || registerName["popin-id"].value.includes(' ')) {
+            alert("Les underscores et espaces ne sont pas autorisés");
+            return;
+        }
         form.classList.remove("form-hidden");
         popinName.setAttribute("disabled", true);
         console.log(registerName["popin-id"].value);
@@ -59,6 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
     allImg.forEach((img) => img.addEventListener("click", function () {
         imgForm.value = img.src;
     }))
+
+
+
+    //---------------------
+
+
+
+
 });
 
 

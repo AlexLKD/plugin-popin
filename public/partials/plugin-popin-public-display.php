@@ -23,6 +23,7 @@
 //------------------------------------------
 //------------------------------------------
 // get the option who contains plugin_popin display option to 1 and replace "test-front"
+// var_dump(get_option)
 $testVariable = "test-couleur-txt";
 
 // get all the options and keep only contains "plugin_popin"
@@ -43,7 +44,7 @@ foreach ($alloptions as $key => $value) {
 
 // group all the rows by there plugin id
 $groupedOptions = array();
-
+$popinKeys = [];
 foreach ($filteredOptions as $key => $value) {
 
     $parts = explode('_', $key);
@@ -52,12 +53,21 @@ foreach ($filteredOptions as $key => $value) {
 
     if (!isset($groupedOptions[$groupName])) {
         $groupedOptions[$groupName] = array();
+        $popinKeys[] = $groupName;
     }
 
     $groupedOptions[$groupName][$key] = $value;
 }
-$popinActivated = $groupedOptions[$testVariable];
-// var_dump($popinActivated);
+
+// var_dump($groupedOptions);
+var_dump($popinKeys);
+foreach($popinKeys as $key) {
+    if(get_option("plugin_popin_" . $key . "_activated") == "1") {
+        $popinActivated = $groupedOptions[$key];
+    }
+}
+
+
 
 function find_key($array, $substring) {
     $matching_key = [];
@@ -95,7 +105,8 @@ $button = find_key($popinActivated, "button");
         <form id="leadGeneration">
             <img class="center-image" src="<?=$popinActivated[$image[0]]?>" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
             <div id="description">
-                <p id="description"><?=$popinActivated[$description[0]]?></p>
+                <!-- <p id="description"><?=$popinActivated[$description[0]]?></p> -->
+                <p id="description"><?=str_replace('\\', '', $popinActivated[$description[0]])?></p>
             </div>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input id="mybtn" class="red-pop" type="submit" style="background-color: <?=$popinActivated[$buttonColor[0]]?>" value="<?=$popinActivated[$button[0]]?>">

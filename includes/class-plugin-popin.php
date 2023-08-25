@@ -162,6 +162,7 @@ class Plugin_Popin
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
 		$this->loader->add_action('admin_menu', $plugin_admin, 'wp_popup_display_settings_pages');
 		$this->loader->add_action('admin_init', $plugin_admin, 'wp_popup_register_option_in_database');
+		$this->loader->add_action('admin_init', $plugin_admin, 'wp_popup_update_popin_activation_option');
 	}
 
 	/**
