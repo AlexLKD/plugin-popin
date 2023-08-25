@@ -24,7 +24,6 @@
 //------------------------------------------
 // get the option who contains plugin_popin display option to 1 and replace "test-front"
 // var_dump(get_option)
-$testVariable = "test-couleur-txt";
 
 // get all the options and keep only contains "plugin_popin"
 
@@ -60,10 +59,19 @@ foreach ($filteredOptions as $key => $value) {
 }
 
 // var_dump($groupedOptions);
-var_dump($popinKeys);
+// var_dump($popinKeys);
 foreach($popinKeys as $key) {
-    if(get_option("plugin_popin_" . $key . "_activated") == "1") {
+    if(get_option("plugin_popin_" . $key . "_activated") !== "1") {
+        $popinActivated = false;
+    } else {
         $popinActivated = $groupedOptions[$key];
+        // get all the values needed in variables
+        $backgroundColor = find_key($popinActivated, "color-bg");
+        $buttonColor = find_key($popinActivated, "color-btn");
+        $description = find_key($popinActivated, "description");
+        $image = find_key($popinActivated, "image");
+        $button = find_key($popinActivated, "button");
+
     }
 }
 
@@ -79,22 +87,16 @@ function find_key($array, $substring) {
     }
     return $matching_key;
 }
-
-
-// get all the values needed in variables
-$backgroundColor = find_key($popinActivated, "color-bg");
-$buttonColor = find_key($popinActivated, "color-btn");
-$description = find_key($popinActivated, "description");
-$image = find_key($popinActivated, "image");
-$button = find_key($popinActivated, "button");
 // var_dump($image[0]);
 // var_dump($popinActivated[$image[0]]);
+
+
 
 
 ?>
 
 
-
+<?php if ($popinActivated):?>
 
 <div id="redmodal" class="redmodal" style="background-color: <?=$popinActivated[$backgroundColor[0]]?>; display: none">
     <div class="redmodal-header">
@@ -117,3 +119,5 @@ $button = find_key($popinActivated, "button");
     </div>
 </div>
 <div id="overlay" class="overlay js-overlay" style="display: none"> </div>
+
+<?php endif?>
