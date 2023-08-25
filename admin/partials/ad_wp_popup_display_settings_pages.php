@@ -74,26 +74,33 @@ function testCSS()
 <div class="container">
     <div class="display-list">
         <img class="center-image" src="https://cdn.discordapp.com/attachments/838359232985694238/1143886389650399253/image.psd_1.png" alt="Wordpress Design Development Essential Cheatsheets Free Ebook">
-       
+
         <?php
         echo '<div class="scrollable-container">';
         echo '<div class="flex-list">';
         echo "<p>Popins disponibles :</p>";
-        
+
         foreach ($groupedOptions as $key => $value) {
             if (!empty($value["plugin_popin_" . $key . "_description"])) {
-                
+
                 // form to update option activated
                 echo '<form method="post" action="">
                 <input name="form-action" type="hidden" value="update-activate">
-                <input name="id-popin" type="hidden" value="'. $key . '">
+                <input name="id-popin" type="hidden" value="' . $key . '">
                 <input name="" type="hidden" value="1">';
                 submit_button("Activer cette pop-in");
+                echo '</form>';
+
+                echo '<form method="post" action="">
+                <input name="form-action" type="hidden" value="delete">
+                <input name="id-popin" type="hidden" value="' . $key . '">
+                <input name="" type="hidden" value="1">';
+                submit_button("Supprimer cette pop-in");
                 echo '</form>';
                 
                 echo '<div id="redmodal" class="redmodal modal-preview" style="background-color:' . $value["plugin_popin_" . $key . "_color-bg"] . ';">';
                 echo '<form class="edit-form">';
-                echo '<input name="edit" class="radio-button" type="radio" data-id-describe="'. $value["plugin_popin_" . $key . "_description"] .'" name:"radio-'.$key.'" value="'.$key.'" data-id-img="' . $value["plugin_popin_" . $key . "_image"] . '"  data-id-btn="' . $value["plugin_popin_" . $key . "_button"] . '" data-id="'.$key.'"/>
+                echo '<input name="edit" class="radio-button" type="checkbox" data-id-describe="' . $value["plugin_popin_" . $key . "_description"] . '" name:"radio-' . $key . '" value="' . $key . '" data-id-img="' . $value["plugin_popin_" . $key . "_image"] . '"  data-id-btn="' . $value["plugin_popin_" . $key . "_button"] . '" data-id="' . $key . '"/>
                     <label for="edit">Editer</label>
                 </form>
                 <div class="redmodal-header">
@@ -154,26 +161,27 @@ function testCSS()
             </div>
             <?= submit_button() ?>
         </form>
-        <?=displayAttachments()?>
+        <?= displayAttachments() ?>
     </div>
     <?php
-    function displayAttachments() {
+    function displayAttachments()
+    {
 
         $args = array(
             'post_type' => 'attachment',
             'post_mime_type' => 'image',
             'posts_per_page' => -1, // Display all images
         );
-        
+
         $attachments = get_posts($args);
         echo '<div class="gallery">';
         foreach ($attachments as $attachment) {
             $attachment_id = $attachment->ID;
             $image_attributes = wp_get_attachment_image_src($attachment_id, 'thumbnail', false);
-            
+
             if ($image_attributes) {
                 $image_url = $image_attributes[0]; // URL of the image
-                
+
                 // Output the image tag
                 echo '<img class="js-img gallery-img" src="' . esc_url($image_url) . '" alt="Image">';
             }
@@ -188,18 +196,18 @@ function testCSS()
 
 <template id="renameFormTemplate">
     <form action="" method="update" data-form-id="">
-    <div id="redmodal" class="redmodal modal-preview" >
+        <div id="redmodal" class="redmodal modal-preview">
             <div class="redmodal-header">
                 <div class="redmodal-title"> </div>
             </div>
             <div class="redmodal-body">
                 <div id="leadGeneration">
-                <img  class="center-image" type="text" name="img" src="">
+                    <img class="center-image" type="text" name="img" src="">
                     <div id="description">
-                    <input type="text" name="choiceText" value="">
-            
+                        <input type="text" name="choiceText" value="">
+
                     </div>
-                    <input type="email" id="email" name="email" placeholder="Email" >
+                    <input type="email" id="email" name="email" placeholder="Email">
                     <input type="text" name="textBtn" value="">
                     <input type="hidden" id="formid" name="formid" value="1005">
                     <input type="submit" value="valider">
@@ -207,5 +215,12 @@ function testCSS()
             </div>
         </div>
 
-        </form>
-    </template>
+    </form>
+</template>
+
+
+
+
+
+
+

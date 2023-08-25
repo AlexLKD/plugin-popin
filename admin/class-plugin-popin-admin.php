@@ -137,6 +137,7 @@ class Plugin_Popin_Admin
 			add_option($template_option . "color-txt", $_POST["color-txt"]);
 			add_option($template_option . "activated", $_POST["activated"]);
 		}
+		
 	}
 
 
@@ -195,5 +196,30 @@ class Plugin_Popin_Admin
 
 	}
 
+	
+	public function wp_popup_delete_option_in_database()
+	{
+		if (empty($_POST)) return;
+	
+		if ($_POST["form-action"] == "delete") {
+			$idPopin = $_POST["id-popin"];
+			$template_option = "plugin_popin_" . $idPopin . "_";
+	
+			// Assurez-vous que l'utilisateur est autorisé à effectuer cette action
+			if (current_user_can('manage_options')) {
+				// Supprimez chaque option individuellement
+				delete_option($template_option . "description");
+				delete_option($template_option . "image");
+				delete_option($template_option . "button");
+				delete_option($template_option . "color-bg");
+				delete_option($template_option . "color-btn");
+				delete_option($template_option . "color-txt");
+				delete_option($template_option . "activated");
+			} else {
+				// Gérez le cas où l'utilisateur n'est pas autorisé
+				echo "Vous n'avez pas les autorisations nécessaires pour effectuer cette action.";
+			}
+		}
+	}
 
 }
